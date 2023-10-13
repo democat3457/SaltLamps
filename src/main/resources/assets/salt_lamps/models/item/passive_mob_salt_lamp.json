@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "salt_lamps:items/passive_mob_salt_lamp"
+  }
+}

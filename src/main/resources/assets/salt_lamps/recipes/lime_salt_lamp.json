@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "salt_lamps:lime_salt_lamp"
+  },
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "salt_lamps:white_salt_lamp"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 10
+    }
+  ]
+}

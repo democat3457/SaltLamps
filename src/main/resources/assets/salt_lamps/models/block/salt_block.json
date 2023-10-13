@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "salt_lamps:blocks/salt_block"
+  }
+}

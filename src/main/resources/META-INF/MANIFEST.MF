@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: salt_lamps
+Implementation-Version: 1.12.2-1.0.0
+Specification-Vendor: goldelf123
+Specification-Title: salt_lamps
+Implementation-Timestamp: 2023-04-29T13:23:20-0600
+Specification-Version: 1
+Implementation-Vendor: goldelf123
+

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "normal": {
+      "model": "salt_lamps:passive_mob_salt_lamp"
+    }
+  }
+}

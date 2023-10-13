@@ -1,0 +1,24 @@
+tile.salt_lamps.white_salt_lamp.name=White Salt Lamp
+tile.salt_lamps.orange_salt_lamp.name=Orange Salt Lamp
+tile.salt_lamps.magenta_salt_lamp.name=Magenta Salt Lamp
+tile.salt_lamps.light_blue_salt_lamp.name=Light Blue Salt Lamp
+tile.salt_lamps.yellow_salt_lamp.name=Yellow Salt Lamp
+tile.salt_lamps.lime_salt_lamp.name=Lime Salt Lamp
+tile.salt_lamps.pink_salt_lamp.name=Pink Salt Lamp
+tile.salt_lamps.gray_salt_lamp.name=Gray Salt Lamp
+tile.salt_lamps.light_gray_salt_lamp.name=Light Gray Salt Lamp
+tile.salt_lamps.cyan_salt_lamp.name=Cyan Salt Lamp
+tile.salt_lamps.purple_salt_lamp.name=Purple Salt Lamp
+tile.salt_lamps.blue_salt_lamp.name=Blue Salt Lamp
+tile.salt_lamps.brown_salt_lamp.name=Brown Salt Lamp
+tile.salt_lamps.green_salt_lamp.name=Green Salt Lamp
+tile.salt_lamps.red_salt_lamp.name=Red Salt Lamp
+tile.salt_lamps.black_salt_lamp.name=Black Salt Lamp
+
+tile.salt_lamps.pure_salt_lamp.name=Pure Salt Lamp
+
+tile.salt_lamps.hostile_mob_salt_lamp.name=Hostile Salt Lamp
+tile.salt_lamps.passive_mob_salt_lamp.name=Passive Salt Lamp
+
+tile.salt_lamps.salt_block.name=Salt Block
+item.salt_lamps.salt_chunk.name=Salt Chunk

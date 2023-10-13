@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "salt_lamps:hostile_mob_salt_lamp"
+  },
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " c ",
+    "cgc",
+    "clc"
+  ],
+  "key": {
+    "c": {
+      "item": "salt_lamps:salt_chunk"
+    },
+    "g": {
+      "item": "minecraft:skull",
+      "data": 1
+    },
+    "l": {
+      "item": "minecraft:log2",
+      "data": 1
+    }
+  }
+}
