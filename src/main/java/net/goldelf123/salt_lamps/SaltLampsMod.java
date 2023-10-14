@@ -26,12 +26,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = "salt_lamps", name = "Salt Lamps", version = "1.12.2-1.0.0", dependencies = "required-after:forge@[14.23.5.2847,)", useMetadata = true)
+@Mod(modid = "salt_lamps", name = "Salt Lamps", version = "1.12.2-1.1.0", dependencies = "required-after:forge@[14.23.5.2847,)", useMetadata = true)
 @EventBusSubscriber
 public class SaltLampsMod {
   public static final String MODID = "salt_lamps";
   public static final String MODNAME = "Salt Lamps";
-  public static final String MODVERSION = "1.12.2-1.0.0";
+  public static final String MODVERSION = "1.12.2-1.1.0";
   @Instance
   public static SaltLampsMod instance;
   public static Logger logger;
