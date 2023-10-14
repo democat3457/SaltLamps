@@ -7,12 +7,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 
 public class TileEntityMobLamp
   extends TileEntitySaltLamp
-  implements ITickable
 {
   private boolean affectsHostileMobs = false;
   private boolean affectsPassiveMobs = false;

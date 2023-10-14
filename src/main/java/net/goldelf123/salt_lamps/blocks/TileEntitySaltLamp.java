@@ -17,7 +17,9 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 
 public class TileEntitySaltLamp
-  extends TileEntity implements ITickable {
+  extends TileEntity
+  implements ITickable
+{
   protected List<PotionEffect> potionEffects = new ArrayList<>();
   protected int ticksLeft = 0;
   protected long timeSinceStart = 0L;

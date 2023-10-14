@@ -7,12 +7,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 
 public class TileEntityPureLamp
   extends TileEntitySaltLamp
-  implements ITickable
 {
   public void update() {
     if ((this.world.getTotalWorldTime() - this.timeSinceStart) % 10L == 0L && Config.enableDiffusion)

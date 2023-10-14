@@ -70,6 +70,6 @@ public class BlockSalt
     Item itemBlock = (Item)Item.REGISTRY.getObject(new ResourceLocation("salt_lamps", "salt_block"));
     ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(getRegistryName(), "inventory");
     int DEFAULT_ITEM_SUBTYPE = 0;
-    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlock, 0, itemModelResourceLocation);
+    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlock, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
   }
 }

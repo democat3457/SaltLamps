@@ -24,7 +24,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = "salt_lamps", name = "Salt Lamps", version = "1.12.2-1.0.0", dependencies = "required-after:forge@[14.23.5.2854,)", useMetadata = true)
