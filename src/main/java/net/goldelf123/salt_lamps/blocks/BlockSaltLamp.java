@@ -28,10 +28,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-
-
-
-
 public class BlockSaltLamp extends Block implements ITileEntityProvider {
 
   private String blockName = "";
@@ -87,24 +83,20 @@ public class BlockSaltLamp extends Block implements ITileEntityProvider {
       return true;
     } 
 
-    
-    if (playerIn.inventory.getCurrentItem().getItem() instanceof net.minecraft.item.ItemPotion || playerIn.inventory
-      .getCurrentItem().getItem() instanceof net.minecraft.item.ItemSplashPotion || playerIn.inventory
-      .getCurrentItem().getItem() instanceof net.minecraft.item.ItemLingeringPotion) {
-      
+    if (playerIn.inventory.getCurrentItem().getItem() instanceof net.minecraft.item.ItemPotion ||
+        playerIn.inventory.getCurrentItem().getItem() instanceof net.minecraft.item.ItemSplashPotion ||
+        playerIn.inventory.getCurrentItem().getItem() instanceof net.minecraft.item.ItemLingeringPotion) {
       TileEntity tileentity = worldIn.getTileEntity(pos);
       if (tileentity instanceof TileEntitySaltLamp) {
         if (!playerIn.inventory.getCurrentItem().getItem().hasEffect(playerIn.inventory.getCurrentItem()) && ((TileEntitySaltLamp)tileentity).isDiffusing()) {
           if (!playerIn.capabilities.isCreativeMode) {
-            
             playerIn.inventory.getCurrentItem().shrink(1);
             playerIn.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
           } 
           
           ((TileEntitySaltLamp)tileentity).clearEffects();
           worldIn.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 0.5F, 2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
-        }
-        else if (playerIn.inventory.getCurrentItem().getItem().hasEffect(playerIn.inventory.getCurrentItem())) {
+        } else if (playerIn.inventory.getCurrentItem().getItem().hasEffect(playerIn.inventory.getCurrentItem())) {
           if (!playerIn.capabilities.isCreativeMode) {
             playerIn.inventory.getCurrentItem().shrink(1);
             playerIn.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
