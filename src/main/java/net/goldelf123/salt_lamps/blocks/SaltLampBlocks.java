@@ -74,31 +74,4 @@ public class SaltLampBlocks
     
     saltBlock.initModel();
   }
-
-  
-  public static void initItemModels() {
-    whiteSaltLamp.initItemModel();
-    orangeSaltLamp.initItemModel();
-    magentaSaltLamp.initItemModel();
-    lightBlueSaltLamp.initItemModel();
-    yellowSaltLamp.initItemModel();
-    limeSaltLamp.initItemModel();
-    pinkSaltLamp.initItemModel();
-    graySaltLamp.initItemModel();
-    lightGraySaltLamp.initItemModel();
-    cyanSaltLamp.initItemModel();
-    purpleSaltLamp.initItemModel();
-    blueSaltLamp.initItemModel();
-    brownSaltLamp.initItemModel();
-    greenSaltLamp.initItemModel();
-    redSaltLamp.initItemModel();
-    blackSaltLamp.initItemModel();
-    
-    pureSaltLamp.initItemModel();
-    
-    hostileMobSaltLamp.initItemModel();
-    passiveMobSaltLamp.initItemModel();
-    
-    saltBlock.initModel();
-  }
 }
