@@ -9,15 +9,13 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 
-public class TileEntityMobLamp
-  extends TileEntitySaltLamp
-{
+public class TileEntityMobLamp extends TileEntitySaltLamp {
+
   private boolean affectsHostileMobs = false;
   private boolean affectsPassiveMobs = false;
-  
+
   public void diffuseEffects() {
     if (!this.world.isRemote && !this.potionEffects.isEmpty() && this.ticksLeft > 0) {
-      
       int posX = this.pos.getX();
       int posY = this.pos.getY();
       int posZ = this.pos.getZ();
@@ -29,56 +27,41 @@ public class TileEntityMobLamp
       List<EntityLivingBase> listPassive = new ArrayList<>();
       List<EntityTameable> listTameable = new ArrayList<>();
       for (EntityLivingBase entity : listMobs) {
-        
         if (entity.isCreatureType(EnumCreatureType.MONSTER, false)) {
-          
-          listHostile.add(entity); continue;
+          listHostile.add(entity);
+          continue;
         } 
-        if (entity.isCreatureType(EnumCreatureType.CREATURE, false) || entity
-          .isCreatureType(EnumCreatureType.AMBIENT, false) || entity
-          .isCreatureType(EnumCreatureType.WATER_CREATURE, false)) {
-          
-          listPassive.add(entity); continue;
+        if (entity.isCreatureType(EnumCreatureType.CREATURE, false) ||
+            entity.isCreatureType(EnumCreatureType.AMBIENT, false) ||
+            entity.isCreatureType(EnumCreatureType.WATER_CREATURE, false)) {
+          listPassive.add(entity);
+          continue;
         } 
-        if (entity instanceof EntityTameable)
-        {
+        if (entity instanceof EntityTameable) {
           listTameable.add((EntityTameable)entity);
         }
       } 
       listTameable.removeAll(listTameable);
       
-      if (this.affectsHostileMobs)
-      {
+      if (this.affectsHostileMobs) {
         for (EntityLivingBase entityHostile : listHostile) {
-          
           for (int i = 0; i < this.potionEffects.size(); i++) {
-            
             if (((PotionEffect)this.potionEffects.get(i)).getPotion().isInstant()) {
-              
               ((PotionEffect)this.potionEffects.get(i)).getPotion().performEffect(entityHostile, ((PotionEffect)this.potionEffects.get(i)).getAmplifier());
-            }
-            else {
-              
+            } else {
               entityHostile.addPotionEffect(new PotionEffect(((PotionEffect)this.potionEffects.get(i)).getPotion(), 100, ((PotionEffect)this.potionEffects.get(i)).getAmplifier(), true, true));
             } 
           } 
         } 
       }
       
-      if (this.affectsPassiveMobs)
-      {
+      if (this.affectsPassiveMobs){
         for (EntityLivingBase entityPassive : listPassive) {
-          
           for (int i = 0; i < this.potionEffects.size(); i++) {
-            
-            if (((PotionEffect)this.potionEffects.get(i)).getPotion().isBeneficial())
-            {
+            if (((PotionEffect)this.potionEffects.get(i)).getPotion().isBeneficial()) {
               if (((PotionEffect)this.potionEffects.get(i)).getPotion().isInstant()) {
-                
                 ((PotionEffect)this.potionEffects.get(i)).getPotion().performEffect(entityPassive, ((PotionEffect)this.potionEffects.get(i)).getAmplifier());
-              }
-              else {
-                
+              } else {
                 entityPassive.addPotionEffect(new PotionEffect(((PotionEffect)this.potionEffects.get(i)).getPotion(), 100, ((PotionEffect)this.potionEffects.get(i)).getAmplifier(), true, true));
               } 
             }
@@ -86,18 +69,12 @@ public class TileEntityMobLamp
         } 
       }
       
-      if (Config.mobLampAffectsTameableMobs && this.affectsPassiveMobs)
-      {
+      if (Config.mobLampAffectsTameableMobs && this.affectsPassiveMobs) {
         for (EntityTameable entityTameable : listTameable) {
-          
           for (int i = 0; i < this.potionEffects.size(); i++) {
-            
             if (((PotionEffect)this.potionEffects.get(i)).getPotion().isInstant()) {
-              
               ((PotionEffect)this.potionEffects.get(i)).getPotion().performEffect((EntityLivingBase)entityTameable, ((PotionEffect)this.potionEffects.get(i)).getAmplifier());
-            }
-            else {
-              
+            } else {
               entityTameable.addPotionEffect(new PotionEffect(((PotionEffect)this.potionEffects.get(i)).getPotion(), 100, ((PotionEffect)this.potionEffects.get(i)).getAmplifier(), true, true));
             } 
           } 
@@ -106,7 +83,6 @@ public class TileEntityMobLamp
     } 
   }
 
-  
   public TileEntityMobLamp setAffectedEntities(boolean affectsHostileMobsIn, boolean affectsPassiveMobsIn) {
     this.affectsHostileMobs = affectsHostileMobsIn;
     this.affectsPassiveMobs = affectsPassiveMobsIn;

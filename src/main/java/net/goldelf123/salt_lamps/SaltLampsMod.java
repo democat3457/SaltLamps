@@ -29,9 +29,11 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = "salt_lamps", name = "Salt Lamps", version = "1.12.2-1.1.0", dependencies = "required-after:forge@[14.23.5.2847,)", useMetadata = true)
 @EventBusSubscriber
 public class SaltLampsMod {
+
   public static final String MODID = "salt_lamps";
   public static final String MODNAME = "Salt Lamps";
   public static final String MODVERSION = "1.12.2-1.1.0";
+
   @Instance
   public static SaltLampsMod instance;
   public static Logger logger;
@@ -46,22 +48,16 @@ public class SaltLampsMod {
     Config.readConfig();
   }
 
-
-  
   @EventHandler
   public void init(FMLInitializationEvent event) {}
 
-
-  
   @EventHandler
   public void postInit(FMLPostInitializationEvent event) {
-    if (Config.canGenerateSalt)
-    {
+    if (Config.canGenerateSalt) {
       GameRegistry.registerWorldGenerator((IWorldGenerator)new SaltSurfaceGen(), 0);
     }
   }
 
-  
   @SubscribeEvent
   public static void registerBlocks(RegistryEvent.Register<Block> event) {
     event.getRegistry().register(SaltLampBlocks.whiteSaltLamp);
@@ -89,7 +85,6 @@ public class SaltLampsMod {
     event.getRegistry().register(SaltLampBlocks.saltBlock);
   }
 
-  
   @SubscribeEvent
   public static void registerItems(RegistryEvent.Register<Item> event) {
     event.getRegistry().register((new ItemBlock(SaltLampBlocks.whiteSaltLamp)).setRegistryName(SaltLampBlocks.whiteSaltLamp.getRegistryName()));
@@ -123,7 +118,6 @@ public class SaltLampsMod {
     event.getRegistry().register(SaltLampItems.saltChunk);
   }
 
-  
   @SubscribeEvent
   public static void registerModels(ModelRegistryEvent event) {
     SaltLampBlocks.initModels();

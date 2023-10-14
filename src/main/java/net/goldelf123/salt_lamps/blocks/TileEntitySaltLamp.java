@@ -16,43 +16,33 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 
-public class TileEntitySaltLamp
-  extends TileEntity
-  implements ITickable
-{
+public class TileEntitySaltLamp extends TileEntity implements ITickable {
+
   protected List<PotionEffect> potionEffects = new ArrayList<>();
   protected int ticksLeft = 0;
   protected long timeSinceStart = 0L;
 
-
-  
   public void onLoad() {
     this.timeSinceStart = this.world.getTotalWorldTime();
-    if (Config.enableDiffusion)
-    {
+    if (Config.enableDiffusion) {
       diffuseEffects();
     }
   }
 
-  
   public void update() {
-    if ((this.world.getTotalWorldTime() - this.timeSinceStart) % 60L == 0L && Config.enableDiffusion)
-    {
+    if ((this.world.getTotalWorldTime() - this.timeSinceStart) % 60L == 0L && Config.enableDiffusion) {
       diffuseEffects();
     }
     
     if (this.ticksLeft > 0 && Config.enableTimeLimit) {
-      
       this.ticksLeft--;
       
-      if (this.ticksLeft == 0)
-      {
+      if (this.ticksLeft == 0) {
         clearEffects();
       }
     } 
   }
 
-  
   public void clearEffects() {
     this.potionEffects.clear();
     this.ticksLeft = 0;
@@ -63,22 +53,18 @@ public class TileEntitySaltLamp
     markDirty();
   }
 
-  
   public void setEffects(List<PotionEffect> potionsIn) {
     this.potionEffects = potionsIn;
     int minTime = Integer.MAX_VALUE;
     for (PotionEffect potionIn : potionsIn) {
-      
       int potionDuration = potionIn.getDuration();
-      if (potionDuration < minTime)
-      {
+      if (potionDuration < minTime) {
         minTime = potionDuration;
       }
     } 
     this.ticksLeft = minTime;
     
-    if (this.ticksLeft < Config.minimumDuration)
-    {
+    if (this.ticksLeft < Config.minimumDuration) {
       this.ticksLeft = Config.minimumDuration * 20;
     }
     
@@ -92,10 +78,8 @@ public class TileEntitySaltLamp
     markDirty();
   }
 
-  
   public void diffuseEffects() {
     if (!this.world.isRemote && !this.potionEffects.isEmpty() && this.ticksLeft > 0) {
-      
       int posX = this.pos.getX();
       int posY = this.pos.getY();
       int posZ = this.pos.getZ();
@@ -104,17 +88,11 @@ public class TileEntitySaltLamp
       List<EntityPlayer> listPlayers = this.world.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
       
       for (EntityPlayer entityPlayer : listPlayers) {
-        
         for (int i = 0; i < this.potionEffects.size(); i++) {
-          
-          if (Config.allowNegativePlayerEffects || ((PotionEffect)this.potionEffects.get(i)).getPotion().isBeneficial())
-          {
+          if (Config.allowNegativePlayerEffects || ((PotionEffect)this.potionEffects.get(i)).getPotion().isBeneficial()) {
             if (((PotionEffect)this.potionEffects.get(i)).getPotion().isInstant()) {
-              
               ((PotionEffect)this.potionEffects.get(i)).getPotion().performEffect((EntityLivingBase)entityPlayer, ((PotionEffect)this.potionEffects.get(i)).getAmplifier());
-            }
-            else {
-              
+            } else {
               entityPlayer.addPotionEffect(new PotionEffect(((PotionEffect)this.potionEffects.get(i)).getPotion(), 100, ((PotionEffect)this.potionEffects.get(i)).getAmplifier(), true, true));
             } 
           }
@@ -123,51 +101,38 @@ public class TileEntitySaltLamp
     } 
   }
 
-  
   public boolean isDiffusing() {
-    if (this.ticksLeft > 0 && !this.potionEffects.isEmpty())
-    {
-      return true;
-    }
-    
-    return false;
+    return this.ticksLeft > 0 && !this.potionEffects.isEmpty();
   }
 
-  
   public List<PotionEffect> getEffects() {
     return this.potionEffects;
   }
 
-  
   public int getParticleColor() {
     return PotionUtils.getPotionColorFromEffectList(this.potionEffects);
   }
 
-  
   public int getTicksLeft() {
     return this.ticksLeft;
   }
 
-  
   public void readFromNBT(NBTTagCompound compound) {
     this.potionEffects.clear();
     
     super.readFromNBT(compound);
     int numPotionEffects = compound.getInteger("NumPotionEffects");
     for (int i = 0; i < numPotionEffects; i++) {
-      
       PotionEffect tempPotionEffect = new PotionEffect(Potion.getPotionById(compound.getByte("PotionId" + i)), 0, compound.getByte("PotionAmplifier" + i));
       this.potionEffects.add(tempPotionEffect);
     } 
     this.ticksLeft = compound.getInteger("TicksLeft");
   }
 
-  
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
     compound.setInteger("NumPotionEffects", this.potionEffects.size());
     for (int i = 0; i < this.potionEffects.size(); i++) {
-      
       compound.setByte("PotionId" + i, (byte)Potion.getIdFromPotion(((PotionEffect)this.potionEffects.get(i)).getPotion()));
       compound.setByte("PotionAmplifier" + i, (byte)((PotionEffect)this.potionEffects.get(i)).getAmplifier());
     } 
@@ -175,17 +140,14 @@ public class TileEntitySaltLamp
     return compound;
   }
 
-  
   public SPacketUpdateTileEntity getUpdatePacket() {
     return new SPacketUpdateTileEntity(getPos(), 1, getUpdateTag());
   }
 
-  
   public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
     readFromNBT(packet.getNbtCompound());
   }
 
-  
   public NBTTagCompound getUpdateTag() {
     return writeToNBT(new NBTTagCompound());
   }

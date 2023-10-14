@@ -9,27 +9,22 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 
-public class TileEntityPureLamp
-  extends TileEntitySaltLamp
-{
+public class TileEntityPureLamp extends TileEntitySaltLamp {
+
   public void update() {
-    if ((this.world.getTotalWorldTime() - this.timeSinceStart) % 10L == 0L && Config.enableDiffusion)
-    {
+    if ((this.world.getTotalWorldTime() - this.timeSinceStart) % 10L == 0L && Config.enableDiffusion) {
       diffuseEffects();
     }
     
     if (this.ticksLeft > 0 && Config.enableTimeLimit) {
-      
       this.ticksLeft--;
       
-      if (this.ticksLeft == 0)
-      {
+      if (this.ticksLeft == 0) {
         clearEffects();
       }
     } 
   }
 
-  
   public void setEffects() {
     this.ticksLeft = Config.pureLampTimeDuration * 20;
     
@@ -41,10 +36,8 @@ public class TileEntityPureLamp
     markDirty();
   }
 
-  
   public void diffuseEffects() {
     if (!this.world.isRemote && this.ticksLeft > 0) {
-      
       int posX = this.pos.getX();
       int posY = this.pos.getY();
       int posZ = this.pos.getZ();
@@ -53,12 +46,9 @@ public class TileEntityPureLamp
       List<EntityPlayer> listPlayers = this.world.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
       
       for (EntityPlayer entityPlayer : listPlayers) {
-        
         Collection<PotionEffect> listPotions = entityPlayer.getActivePotionEffects();
         for (PotionEffect potionEffect : listPotions) {
-          
-          if (potionEffect.getPotion().isBadEffect())
-          {
+          if (potionEffect.getPotion().isBadEffect()) {
             entityPlayer.removePotionEffect(potionEffect.getPotion());
           }
         } 
@@ -66,17 +56,10 @@ public class TileEntityPureLamp
     } 
   }
 
-  
   public boolean isDiffusing() {
-    if (this.ticksLeft > 0)
-    {
-      return true;
-    }
-    
-    return false;
+    return this.ticksLeft > 0;
   }
 
-  
   public void readFromNBT(NBTTagCompound compound) {
     this.potionEffects.clear();
     
@@ -84,7 +67,6 @@ public class TileEntityPureLamp
     this.ticksLeft = compound.getInteger("TicksLeft");
   }
 
-  
   public NBTTagCompound writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
     compound.setInteger("TicksLeft", this.ticksLeft);

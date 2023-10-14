@@ -3,10 +3,8 @@ package net.goldelf123.salt_lamps;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Level;
 
+public class Config {
 
-
-public class Config
-{
   public static boolean enableDiffusion = true;
   public static int timeMultiplier = 5;
   public static boolean enableTimeLimit = true;
@@ -28,7 +26,6 @@ public class Config
   public static int saltClusterSize = 2;
   
   private static final String CATEGORY_BALANCE = "Balance";
-  
   private static final String CATEGORY_WORLDGEN = "WorldGen";
   private static final String CATEGORY_CRAFTING = "Crafting";
   
@@ -38,21 +35,15 @@ public class Config
     try {
       cfg.load();
       initBalanceConfig(cfg);
-    }
-    catch (Exception exception) {
-      
+    } catch (Exception exception) {
       SaltLampsMod.logger.log(Level.ERROR, "Problem loading config file!", exception);
-    }
-    finally {
-      
-      if (cfg.hasChanged())
-      {
+    } finally {
+      if (cfg.hasChanged()) {
         cfg.save();
       }
     } 
   }
 
-  
   private static void initBalanceConfig(Configuration cfg) {
     cfg.addCustomCategoryComment(CATEGORY_BALANCE, "Makes sure that the effects of salt lamps aren't too OP (unless you want them to be)");
     cfg.addCustomCategoryComment(CATEGORY_WORLDGEN, "Controls the worldgen for this mod");

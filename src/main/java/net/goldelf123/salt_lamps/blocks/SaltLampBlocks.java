@@ -2,8 +2,8 @@ package net.goldelf123.salt_lamps.blocks;
 
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
-public class SaltLampBlocks
-{
+public class SaltLampBlocks {
+
   @ObjectHolder("salt_lamps:white_salt_lamp")
   public static BlockSaltLamp whiteSaltLamp = new BlockSaltLamp("white_salt_lamp");
   @ObjectHolder("salt_lamps:orange_salt_lamp")
@@ -48,7 +48,6 @@ public class SaltLampBlocks
   @ObjectHolder("salt_lamps:salt_block")
   public static BlockSalt saltBlock = new BlockSalt();
 
-  
   public static void initModels() {
     whiteSaltLamp.initModel();
     orangeSaltLamp.initModel();
