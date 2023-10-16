@@ -49,7 +49,9 @@ public class SaltLampsMod {
   }
 
   @EventHandler
-  public void init(FMLInitializationEvent event) {}
+  public void init(FMLInitializationEvent event) {
+    Recipes.init();
+  }
 
   @EventHandler
   public void postInit(FMLPostInitializationEvent event) {

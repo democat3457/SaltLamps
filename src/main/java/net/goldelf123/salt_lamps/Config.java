@@ -24,6 +24,8 @@ public class Config {
   public static boolean canGenerateSalt = true;
   public static int saltPerChunk = 1;
   public static int saltClusterSize = 2;
+
+  public static String saltChunkReplacementOre = "";
   
   private static final String CATEGORY_BALANCE = "Balance";
   private static final String CATEGORY_WORLDGEN = "WorldGen";
@@ -47,7 +49,7 @@ public class Config {
   private static void initBalanceConfig(Configuration cfg) {
     cfg.addCustomCategoryComment(CATEGORY_BALANCE, "Makes sure that the effects of salt lamps aren't too OP (unless you want them to be)");
     cfg.addCustomCategoryComment(CATEGORY_WORLDGEN, "Controls the worldgen for this mod");
-    cfg.addCustomCategoryComment(CATEGORY_CRAFTING, "Enable or disable crafting recipes");
+    cfg.addCustomCategoryComment(CATEGORY_CRAFTING, "Options related to crafting recipes");
     
     enableDiffusion = cfg.getBoolean("EnablePotionDiffusion", CATEGORY_BALANCE, enableDiffusion, "Enable or disable potion effect diffusion from the lamps. If set to false,\nthe lamps will be purely decorational.");
     
@@ -69,5 +71,7 @@ public class Config {
     canGenerateSalt = cfg.getBoolean("CanGenerateSaltOre", CATEGORY_WORLDGEN, canGenerateSalt, "Enable or disable generation of salt blocks.");
     saltPerChunk = cfg.getInt("SaltPerChunk", CATEGORY_WORLDGEN, saltPerChunk, 0, 16, "Controls the maximum salt clusters that can be generated per chunk.");
     saltClusterSize = cfg.getInt("SaltClusterSize", CATEGORY_WORLDGEN, saltClusterSize, 1, 16, "Controls the size of salt clusters.");
+    
+    saltChunkReplacementOre = cfg.getString("SaltChunkReplacementOre", CATEGORY_CRAFTING, saltChunkReplacementOre, "Replace salt chunks in salt lamps crafting recipes with this oredict.\nIf empty, keeps salt chunks as the only allowed ingredient for salt. Recommended to set to 'dustSalt' for larger packs.");
   }
 }

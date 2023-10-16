@@ -36,15 +36,20 @@ public class SaltLampBlocks {
   public static BlockSaltLamp redSaltLamp = new BlockSaltLamp("red_salt_lamp");
   @ObjectHolder("salt_lamps:black_salt_lamp")
   public static BlockSaltLamp blackSaltLamp = new BlockSaltLamp("black_salt_lamp");
-  
+
+  public static BlockSaltLamp[] coloredSaltLamps = new BlockSaltLamp[] {
+    whiteSaltLamp, orangeSaltLamp, magentaSaltLamp, lightBlueSaltLamp, yellowSaltLamp, limeSaltLamp, pinkSaltLamp, graySaltLamp,
+    lightGraySaltLamp, cyanSaltLamp, purpleSaltLamp, blueSaltLamp, brownSaltLamp, greenSaltLamp, redSaltLamp, blackSaltLamp
+  };
+
   @ObjectHolder("salt_lamps:pure_salt_lamp")
   public static BlockPureLamp pureSaltLamp = new BlockPureLamp("pure_salt_lamp");
-  
+
   @ObjectHolder("salt_lamps:hostile_mob_salt_lamp")
   public static BlockMobLamp hostileMobSaltLamp = new BlockMobLamp("hostile_mob_salt_lamp", true, false);
   @ObjectHolder("salt_lamps:passive_mob_salt_lamp")
   public static BlockMobLamp passiveMobSaltLamp = new BlockMobLamp("passive_mob_salt_lamp", false, true);
-  
+
   @ObjectHolder("salt_lamps:salt_block")
   public static BlockSalt saltBlock = new BlockSalt();
 

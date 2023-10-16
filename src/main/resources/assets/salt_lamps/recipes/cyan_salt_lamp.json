@@ -8,8 +8,8 @@
       "item": "salt_lamps:white_salt_lamp"
     },
     {
-      "item": "minecraft:dye",
-      "data": 6
+      "ore": "dyeCyan",
+      "type": "forge:ore_dict"
     }
   ]
 }
